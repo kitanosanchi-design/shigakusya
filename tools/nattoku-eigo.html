@@ -1,0 +1,542 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>なっとく英語Ⅱ</title>
+<style>
+:root{--bg:#f6f8fb;--card:#fff;--ink:#1d2733;--sub:#5b6878;--line:#d9e1ea;--main:#1f5fa8;--main2:#e8f0fa;--ok:#1e8a4c;--ok2:#e6f5ec;--ng:#c0392b;--ng2:#fbecea;--s:#2a7de1;--v:#e0532f;--o:#2e9d5b;--c:#8a4fc4;--gold:#e9a700}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,"Hiragino Sans","Noto Sans JP",sans-serif;font-size:17px;line-height:1.7}
+header{position:sticky;top:0;z-index:5;background:var(--main);color:#fff;padding:10px 16px 8px}
+header .top{display:flex;align-items:center;gap:10px}
+header h1{font-size:16px;margin:0;font-weight:700;flex:1}
+header .menu{background:rgba(255,255,255,.18);color:#fff;border:0;border-radius:8px;padding:3px 10px;font-size:14px;white-space:nowrap}
+header .bar{height:6px;background:rgba(255,255,255,.3);border-radius:3px;margin-top:6px;overflow:hidden}
+header .bar i{display:block;height:100%;background:#ffd34d;width:0;transition:width .4s}
+header .meta{font-size:12px;opacity:.9;display:flex;justify-content:space-between;margin-top:3px}
+main{max-width:640px;margin:0 auto;padding:14px 16px 120px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:14px 0}
+.tag{display:inline-block;font-size:12px;font-weight:700;padding:2px 9px;border-radius:99px;margin-bottom:6px;color:#fff}
+.t-see{background:#7a5bd1}.t-do{background:#e07b16}.t-think{background:#1f8a8a}.t-solve{background:#1f5fa8}.t-boss{background:#b8322a}.t-why{background:#6b7a8c}.t-ear{background:#c2457a}
+.q{font-weight:700;margin:2px 0 8px}
+.en{font-family:"Helvetica Neue",Arial,sans-serif;font-size:19px}
+.goal{background:var(--main2);border-radius:12px;padding:12px 14px;margin-top:10px}
+button{font:inherit;cursor:pointer}
+.opt{display:block;width:100%;text-align:left;background:#fff;border:2px solid var(--line);border-radius:10px;padding:10px 12px;margin:7px 0;color:var(--ink)}
+.opt.sel-ok{border-color:var(--ok);background:var(--ok2)}
+.opt.sel-ng{border-color:var(--ng);background:var(--ng2)}
+.opt:disabled{cursor:default}
+.btn{background:var(--main);color:#fff;border:0;border-radius:10px;padding:10px 16px;font-weight:700}
+.btn.sub{background:#fff;color:var(--main);border:2px solid var(--main)}
+.btn:disabled{opacity:.45}
+.say{background:#fff;border:2px solid var(--main);color:var(--main);border-radius:99px;padding:3px 12px;font-size:15px;margin:2px 4px 2px 0}
+.chips{display:flex;flex-wrap:wrap;gap:7px;min-height:46px;padding:6px;border-radius:10px}
+.pool{background:#f1f4f8}
+.line{border:2px dashed var(--line);margin-bottom:8px}
+.chip{border:0;border-radius:8px;padding:6px 12px;background:#fff;box-shadow:0 1px 0 #c8d2de,0 0 0 1px #c8d2de inset;font-family:"Helvetica Neue",Arial,sans-serif;font-size:18px;color:var(--ink)}
+.chip.c-s{box-shadow:0 0 0 2px var(--s) inset}.chip.c-v{box-shadow:0 0 0 2px var(--v) inset}.chip.c-o{box-shadow:0 0 0 2px var(--o) inset}.chip.c-c{box-shadow:0 0 0 2px var(--c) inset}
+.fb{margin-top:8px;padding:8px 12px;border-radius:10px;font-size:15px}
+.fb.ok{background:var(--ok2);color:#145c33}.fb.ng{background:var(--ng2);color:#8a2219}.fb.hint{background:#fff7dd;color:#6b5000}
+.naru{margin-top:8px;padding:10px 12px;border-left:4px solid var(--gold);background:#fffaf0;border-radius:0 10px 10px 0;font-size:15px}
+.naru b:first-child{color:#8a6300}
+.box{display:inline-block;border-radius:6px;padding:0 6px;margin:1px 0}
+.bs{background:#dceafc;color:#174f96}.bv{background:#fde3dc;color:#9c3216}.bo{background:#dcf3e5;color:#1b6a3c}.bc{background:#efe3fa;color:#5d2f8f}.bw{background:#fff0c2;color:#7a5600;font-weight:700}
+.legend{font-size:13px;color:var(--sub)}
+.morph{font-family:"Helvetica Neue",Arial,sans-serif;font-size:20px;text-align:center;padding:16px 4px;background:#f7f9fc;border-radius:10px;margin:8px 0;min-height:70px}
+.morph .out{display:inline-block;max-width:320px;transition:all .6s;overflow:hidden;white-space:nowrap;vertical-align:bottom}
+.morph.on .out{max-width:0;opacity:0}
+.morph .in{display:none}.morph.on .in{display:inline-block}
+.passage p{margin:6px 0}
+.g{border-bottom:2px dotted #8aa6c8;cursor:pointer}
+.gloss{font-size:14px;color:var(--sub);min-height:22px}
+textarea,input[type=text]{width:100%;font:inherit;border:2px solid var(--line);border-radius:10px;padding:8px 10px}
+.vocab{display:grid;grid-template-columns:auto 1fr;gap:4px 10px;align-items:center}
+.vocab .en{font-size:18px}
+details summary{cursor:pointer;font-weight:700;color:var(--main)}
+.stars{font-size:28px;letter-spacing:4px;color:var(--gold)}
+.sec{font-size:13px;color:var(--sub);font-weight:700;margin:26px 0 -4px;letter-spacing:.05em}
+.small{font-size:13px;color:var(--sub)}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#1d2733;color:#fff;padding:8px 16px;border-radius:99px;font-size:14px;opacity:0;transition:opacity .3s;pointer-events:none;z-index:9}
+.toast.on{opacity:1}
+.two .row{margin:4px 0}.two .lab{font-size:13px;color:var(--sub);margin:-2px 0 6px}
+.lesson{display:flex;align-items:center;gap:10px;width:100%;text-align:left;background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin:7px 0;color:var(--ink)}
+.lesson .no{flex:0 0 52px;font-size:13px;font-weight:700;color:var(--main)}
+.lesson .tt{flex:1;font-weight:700;line-height:1.4}.lesson .tt small{display:block;font-weight:400;color:var(--sub);font-size:13px}
+.lesson .st{color:var(--gold);font-size:15px;letter-spacing:1px;white-space:nowrap}
+.half{font-size:13px;color:var(--sub);font-weight:700;margin:18px 0 0}
+</style>
+</head>
+<body>
+<a href="../index.html#sample" style="display:block;padding:10px max(16px,env(safe-area-inset-left,0px));background:#1f4c7e;color:#fff;font:700 14px/1.5 -apple-system,BlinkMacSystemFont,'Hiragino Sans','Noto Sans JP',sans-serif;text-decoration:none;letter-spacing:.04em">← 至學舎のHPへ戻る</a>
+<header>
+  <div class="top"><h1 id="htitle">なっとく英語Ⅱ</h1><button class="menu" id="tomenu" hidden>≡ もくじ</button></div>
+  <div class="bar" id="hbar"><i id="bar"></i></div>
+  <div class="meta"><span id="cnt"></span><span id="streak"></span></div>
+</header>
+<main id="app"></main>
+<div class="toast" id="toast"></div>
+
+<script>
+// ===== 設定 =====
+const APP='eigo2', APP_VER='v1';
+const GAS_URL=''; // 記録先（未接続）
+const KEY='nattokuEigo2.v1';
+const LESSONS=[];
+</script>
+<script>
+LESSONS.push({
+  no: 1, title: '関係代名詞の what', sub: '〜もの・〜こと',
+  goal: '<b>今日のゴール</b><br>① 英語は「だれが → する → なにを」の順で並ぶ<br>② [w:what] ひとつで「〜するもの・〜すること」を表せる<br>③ What I like is … で自分のことを言える',
+  steps: [
+  {sec:'1. 語順をとりもどす（5分）'},
+  {type:'info', tag:'see', q:'英語は「並べる順番」で意味が決まる', html:`
+    日本語は「パンを ケンタが 作る」と順番を変えても通じます。英語は変えられません。
+    <div class="morph">[s:Kenta] [v:makes] [o:bread].</div>
+    <div class="legend">[s:だれが] → [v:する] → [o:なにを]　この3つの色は、ずっと使います。</div>
+    <button class="say" data-say="Kenta makes bread.">🔊 聞く</button>`},
+  {type:'order', id:'o1', tag:'do', q:'「私は 音楽が 好きだ」を英語に。', words:['I','like','music'], colors:['s','v','o'],
+    hint:'まず「だれが」。次に「する（好き）」。最後に「なにを」。',
+    naru:'英語は [s:I] [v:like] [o:music]。「好き」が真ん中に来るのが日本語とのちがいです。'},
+  {type:'order', id:'o2', tag:'do', q:'「ケンタは 毎朝 パンを 焼く」を英語に。', words:['Kenta','bakes','bread','every','morning'], colors:['s','v','o','',''],
+    hint:'「毎朝」は、だれが・する・なにを のあと、いちばん最後。',
+    naru:'[s:Kenta] [v:bakes] [o:bread] every morning。「いつ」は最後に足すのが基本です。'},
+
+  {sec:'2. なぞ：この what は「なに？」じゃない（5分）'},
+  {type:'info', tag:'see', q:'2つの文をくらべよう', html:`
+    <p class="en">A: What do you want?　<button class="say" data-say="What do you want?">🔊</button></p>
+    <p class="en">B: I know what you want.　<button class="say" data-say="I know what you want.">🔊</button></p>
+    A は「何がほしいの？」と<b>聞いて</b>います。<br>
+    B は聞いていません。最後が「.」で、<b>you want</b> は「だれが → する」のふつうの順番です。<br>
+    B は「私は <b>あなたがほしいもの</b> を知っている」。
+    <div class="naru"><b>ポイント</b>　B の what は「〜するもの」。[w:what you want] 全体で、ひとつの「もの」になっています。</div>`},
+  {type:'choice', id:'c1', tag:'think', q:'「質問していない what」はどっち？',
+    opts:['What is this?','This is what I need.'], ans:1,
+    hint:'文の終わりが「?」か「.」か、を見よう。',
+    naru:'This is what I need.＝「これが<b>私に必要なもの</b>だ」。聞いていないので「?」がつきません。'},
+  {type:'morph', tag:'see', q:'what の中には「もの」が入っている', lead:'ボタンを押すと、長い言い方が短くなります。',
+    parts:[{t:'This is'},{t:'the thing',c:'o',out:1},{t:'which',c:'w',out:1},{t:'what',c:'w',in:1},{t:'I wanted.'}],
+    note:'[o:the thing]（もの）＋ which（それを）＝ [w:what]。<br>だから what の前に「もの」を表す名詞は置きません。'},
+  {type:'choice', id:'c2', tag:'think', q:'つまずきポイント：どこが変？<br>[e:This is the thing what I wanted.]',
+    opts:['This is が変','the thing と what が「もの」を二重に言っている','I wanted が変'], ans:1,
+    hint:'さっきのボタンを思い出そう。what の中には何が入っていた？',
+    naru:'what はそれだけで「もの」。<br>正しくは [e:This is what I wanted.] か [e:This is the thing (which) I wanted.] のどちらか。'},
+
+  {sec:'3. 使ってみる（8分）'},
+  {type:'choice', id:'c3', tag:'solve', q:'[e:What I want is a new bike.]<br>の意味は？', say:'What I want is a new bike.',
+    opts:['私は新しい自転車がほしいですか？','私がほしいものは、新しい自転車だ','新しい自転車は何ですか？'], ans:1,
+    hint:'What I want ＝「私がほしいもの」。それが文の「だれが（何が）」になっている。',
+    naru:'[s:What I want] [v:is] [o:a new bike]。what のかたまりが、文の頭（何が）に来ています。'},
+  {type:'order', id:'o3', tag:'do', q:'「私に必要なのは 睡眠だ」を英語に。', words:['What','I','need','is','sleep'], colors:['s','s','s','v','o'],
+    hint:'まず「私に必要なもの」＝ What I need のかたまり。次に is。',
+    naru:'[s:What I need] [v:is] [o:sleep]. かたまり全体が「何が」です。'},
+  {type:'order', id:'o4', tag:'do', q:'「それが 私の言いたいことだ」を英語に。', words:['That','is','what','I','want','to','say'], colors:['s','v','o','o','o','o','o'],
+    hint:'That is のあとに「私が言いたいこと」＝ what I want to say。',
+    naru:'[s:That] [v:is] [o:what I want to say]. 会話でよく使います。'},
+  {type:'choice', id:'c4', tag:'solve', q:'(　) に入るのは？<br>[e:I can\'t believe (　) he said.]',
+    opts:['which','what','the thing what'], ans:1,
+    hint:'(　) の前に「もの」を表す名詞はある？ ないなら、「もの」を中に持っている語を選ぶ。',
+    naru:'「彼が言ったこと」＝ what he said。前に名詞がないので what。which は前に名詞が必要です。'},
+
+  {sec:'4. 短い英文を読む（7分）'},
+  {type:'words', items:[['bakery','パン屋'],['station','駅'],['smell','におい'],['fresh','焼きたての・新しい'],['chat','おしゃべりする'],['listen','耳をかたむける']]},
+  {type:'read', title:'A Small Bakery', find:'what のかたまりは3つあります。見つけられるかな？', paras:[
+    'Kenta works at a small {bakery|パン屋} near the {station|駅}.',
+    'He gets up at four every morning.',
+    'What he likes most is the {smell|におい} of {fresh|焼きたての} bread.',
+    '"What I make here is not only bread," he says.',
+    '"I also make a place for people to talk."',
+    'Many old people come and {chat|おしゃべりする} with him.',
+    'What they need is not just food.',
+    'They need someone to {listen|話を聞く}.']},
+  {type:'choice', id:'r1', tag:'solve', q:'ケンタがいちばん好きなものは？',
+    opts:['朝4時に起きること','焼きたてのパンのにおい','駅の近くの店'], ans:1,
+    hint:'What he likes most is … の文をさがそう。',
+    naru:'What he likes most（彼がいちばん好きなもの）is the smell of fresh bread。'},
+  {type:'choice', id:'r2', tag:'think', q:'"What I make here is not only bread." でケンタが言いたいことは？',
+    opts:['パンは作っていない','パンだけでなく、人が話せる場所も作っている','パンを作るのは大変だ'], ans:1,
+    hint:'次の文 "I also make a place for people to talk." とセットで読もう。',
+    naru:'not only bread（パンだけではない）→ also a place（場所も）。what のかたまり「ここで作っているもの」が話の中心です。'},
+  {type:'choice', id:'r3', tag:'think', q:'本文と合うのはどれ？',
+    opts:['お年寄りは食べ物だけを求めて来る','お年寄りには話を聞いてくれる人が必要だ','ケンタは夜にパンを焼く'], ans:1,
+    hint:'最後の2文を読もう。',
+    naru:'What they need is not just food.（必要なのは食べ物だけではない）→ They need someone to listen.'},
+
+  {sec:'5. 耳で聞く（3分）'},
+  {type:'choice', id:'l1', tag:'ear', q:'🔊 を押して聞こう。意味は？', listen:'What I like is music.',
+    opts:['私が好きなものは音楽だ','私は何の音楽が好き？','音楽は好きですか？'], ans:0,
+    hint:'「おそく」で聞きなおそう。最後は「?」の調子（上がる）だった？',
+    naru:'What I like is music. 文の最後は下がる調子。質問ではありません。'},
+  {type:'choice', id:'l2', tag:'ear', q:'🔊 を押して聞こう。聞こえた文は？', listen:'I know what you mean.',
+    opts:['I know what you need.','I know what you mean.','I know you mean it.'], ans:1,
+    hint:'最後の語の始まりの音は「ン」か「ム」か。',
+    naru:'I know what you mean.＝「言いたいこと、わかるよ」。会話でとてもよく使います。'},
+
+  {sec:'6. ボス問題：自分のことを言う（2分）'},
+  {type:'write', id:'w1', tag:'boss', q:'[e:What I like is ________.]<br>自分の好きなものを英語で書こう（単語ひとつでOK）。',
+    example:'例：What I like is sleeping. / What I like is ramen. / What I like is my dog.', placeholder:'What I like is ...', ok_example:'What I like is ramen.',
+    pattern:'^\\s*what\\s+i\\s+like\\s+is\\s+\\S+', need:'What I like is のあとに、好きなものを書こう。'},
+
+  {sec:'もっと知りたい：よくある「なんで？」'},
+  {type:'why', q:'なんで what が「〜もの」になるの？ もとは「なに？」なのに。',
+    a:'「I know what you want.」を「私は <b>あなたが何をほしいか</b> 知っている」と読んでも、意味はほぼ同じです。「何を〜か」を知っている → 「〜するもの」を知っている、と、もとの「なに？」の意味から自然につながっています。<br>なので、この what が「何を〜か」か「〜するもの」か、はっきり分けられない文もあります。どちらで訳しても意味が通れば OK です。'},
+  {type:'why', q:'なんで「the thing what」はだめなの？',
+    a:'what の中にもう「the thing（もの）」が入っているからです。「もののもの」と二重に言うことになります。<br>名詞を置きたいときは [e:the thing which / the thing that]、置かないときは [e:what]。どちらか一方です。'},
+
+  {sec:'まとめ'},
+  {type:'more', q:'what には2つの使い方がある', rows:[
+    {en:'What do you want?', label:'疑問詞の what（なに？）'},
+    {en:'I know what you want.', label:'関係代名詞の what（〜もの）', today:1}]}
+  ]
+});
+
+</script>
+<script>
+LESSONS.push({
+  no: 2, title: '比較（1）基本の形', sub: '〜と同じくらい・〜より・いちばん',
+  goal: '<b>今日のゴール</b><br>① 「AはBより〜だ」は [w:-er than] か [w:more 〜 than]<br>② 「同じくらい」は [w:as 〜 as]、「いちばん」は [w:the -est] か [w:the most 〜]<br>③ 自分とだれかをくらべて言える',
+  steps: [
+  {sec:'1. 語順をとりもどす（5分）'},
+  {type:'info', tag:'see', q:'「AはBだ」の形を思い出そう', html:`
+    「〜は どんなだ」と言うときは、[s:だれが] → [v:is / am / are] → [c:どんな] の順です。
+    <div class="morph">[s:My brother] [v:is] [c:tall].</div>
+    <div class="legend">[c:紫] は「どんな」を表す部分。今日は、この [c:tall] の形が変わります。</div>
+    <button class="say" data-say="My brother is tall.">🔊 聞く</button>`},
+  {type:'order', id:'o1', tag:'do', q:'「私の兄は 背が高い」を英語に。', words:['My','brother','is','tall'], colors:['s','s','v','c'],
+    hint:'まず「だれが」＝ My brother。次に is。最後に「どんな」。',
+    naru:'[s:My brother] [v:is] [c:tall]. 「どんな」は is のうしろに置きます。'},
+  {type:'order', id:'o2', tag:'do', q:'「このかばんは 重い」を英語に。', words:['This','bag','is','heavy'], colors:['s','s','v','c'],
+    hint:'「このかばん」＝ This bag が「何が」。',
+    naru:'[s:This bag] [v:is] [c:heavy]. 形は o1 と同じです。'},
+
+  {sec:'2. なぞ：tall の形が変わる（5分）'},
+  {type:'info', tag:'see', q:'3つの文をくらべよう', html:`
+    <p class="en">A: Ken is as tall as Yuki.　<button class="say" data-say="Ken is as tall as Yuki.">🔊</button></p>
+    <p class="en">B: Ken is taller than Yuki.　<button class="say" data-say="Ken is taller than Yuki.">🔊</button></p>
+    <p class="en">C: Ken is the tallest in his class.　<button class="say" data-say="Ken is the tallest in his class.">🔊</button></p>
+    A は「ケンは ユキと<b>同じくらい</b>背が高い」。<br>
+    B は「ケンは ユキ<b>より</b>背が高い」。<br>
+    C は「ケンは クラスで<b>いちばん</b>背が高い」。
+    <div class="naru"><b>ポイント</b>　語順はぜんぶ「[s:Ken] [v:is] [c:〜]」のまま。変わるのは [c:tall] のまわりだけです。</div>`},
+  {type:'morph', tag:'see', q:'「より」は -er と than', lead:'ボタンを押すと、「くらべる文」に変わります。',
+    parts:[{t:'Ken',c:'s'},{t:'is',c:'v'},{t:'tall',c:'c',out:1},{t:'taller',c:'c',in:1},{t:'than Yuki',c:'w',in:1}],
+    btn:['くらべる ▶','◀ もどす'], say:'Ken is taller than Yuki.',
+    note:'tall に [w:-er] をつけて、うしろに [w:than]（〜より）＋くらべる相手。<br>difficult のような長い語は、-er ではなく前に [w:more] を置きます。'},
+  {type:'choice', id:'c1', tag:'think', q:'つまずきポイント：どこが変？<br>[e:Ken is more taller than Yuki.]',
+    opts:['Ken is が変','more と -er で「もっと」を二重に言っている','than Yuki が変'], ans:1,
+    hint:'taller の -er は、もう「より〜」の意味を持っています。',
+    naru:'-er と more は、どちらか一方だけ。<br>正しくは [e:Ken is taller than Yuki.]'},
+  {type:'choice', id:'c2', tag:'think', q:'(　) に入るのは？<br>[e:This question is (　) than that one.]',
+    opts:['more difficult','difficulter','more difficulter'], ans:0,
+    hint:'difficult は長い語。長い語は -er をつける？ more を置く？',
+    naru:'長い語は [w:more] ＋そのままの形。[e:more difficult than] ＝「〜より難しい」。'},
+
+  {sec:'3. 使ってみる（8分）'},
+  {type:'order', id:'o3', tag:'do', q:'「私の部屋は 君の部屋と 同じくらい 広い」を英語に。', words:['My','room','is','as','big','as','yours'], colors:['s','s','v','c','c','c','c'],
+    hint:'「同じくらい広い」＝ as big as。big の形は変えない。',
+    naru:'[s:My room] [v:is] [c:as big as yours]. as と as で、形を変えない語をはさみます。yours ＝「君のもの（君の部屋）」。'},
+  {type:'order', id:'o4', tag:'do', q:'「ユキは クラスで いちばん 足が速い」を英語に。', words:['Yuki','is','the','fastest','in','our','class'], colors:['s','v','c','c','','',''],
+    hint:'「いちばん速い」＝ fast に -est。その前に何がつく？',
+    naru:'[s:Yuki] [v:is] [c:the fastest] in our class. 「いちばん」には [w:the] がつきます。'},
+  {type:'choice', id:'c3', tag:'solve', q:'(　) に入るのは？<br>[e:My sister is younger than (　).]',
+    opts:['me','my','I\'m'], ans:0,
+    hint:'than のあとには、くらべる相手の「人」が来ます。',
+    naru:'than のあとは [e:me]（私）。[e:than I am] と言うこともできます。my（私の）はうしろに名詞が必要です。I\'m（I am の短い形）は文の最後に置けません。'},
+  {type:'choice', id:'c4', tag:'solve', q:'(　) に入るのは？<br>[e:She is (　) fastest runner on our team.]',
+    opts:['the','a','（何も入れない）'], ans:0,
+    hint:'「いちばん速い人」は、チームに何人いる？',
+    naru:'「いちばん」はひとりに決まるので [w:the]。[e:the fastest runner] ＝「いちばん速い走者」。'},
+
+  {sec:'4. 短い英文を読む（7分）'},
+  {type:'words', items:[['young','若い'],['little brother','弟'],['boss','ボス・いちばんえらい人'],['way','通り道'],['laugh','笑う']]},
+  {type:'read', title:'Two Dogs and a Cat', find:'くらべる言い方は3つあります。見つけられるかな？', paras:[
+    'Mika\'s family has two dogs and a cat.',
+    'Max is a {young|若い} dog, and he is very big.',
+    'He is bigger than Mika\'s {little brother|弟}!',
+    'Coco is an old dog, but she is as fast as Max.',
+    'The cat, Tama, is very small, but she is the {boss|ボス} of the house.',
+    'When Tama walks by, the dogs move out of her {way|通り道}.',
+    '"Tama is the strongest in our family," Mika {laughs|笑う}.']},
+  {type:'choice', id:'r1', tag:'solve', q:'マックスについて正しいのは？',
+    opts:['ミカの弟より大きい','ココより年上だ','家でいちばん小さい'], ans:0,
+    hint:'He is bigger than … の文をさがそう。',
+    naru:'He is bigger than Mika\'s little brother!（ミカの弟より大きい）'},
+  {type:'choice', id:'r2', tag:'think', q:'ココについて正しいのは？',
+    opts:['マックスと同じくらい速い','マックスより大きい','走るのがいちばんおそい'], ans:0,
+    hint:'as fast as Max の意味を考えよう。',
+    naru:'she is as fast as Max ＝「マックスと同じくらい速い」。年をとっていても速いのです。'},
+  {type:'choice', id:'r3', tag:'think', q:'ミカが「タマは家族でいちばん強い」と言うのはなぜ？',
+    opts:['タマが通ると、犬たちがよけるから','タマがいちばん大きいから','タマがいちばん年上だから'], ans:0,
+    hint:'最後から2番目の文を読もう。',
+    naru:'the dogs move out of her way（犬たちがタマの通り道からどく）。だから the strongest（いちばん強い）。'},
+
+  {sec:'5. 耳で聞く（3分）'},
+  {type:'choice', id:'l1', tag:'ear', q:'🔊 を押して聞こう。意味は？', listen:'My brother is taller than me.',
+    opts:['兄は私より背が高い','私は兄より背が高い','兄と私は同じくらいの背だ'], ans:0,
+    hint:'than のあとの語を聞こう。「〜より」の相手はだれ？',
+    naru:'My brother is taller than me. 背が高いのは兄。me は「くらべる相手」です。'},
+  {type:'choice', id:'l2', tag:'ear', q:'🔊 を押して聞こう。意味は？', listen:'She is as old as my mother.',
+    opts:['彼女は私の母と同じ年だ','彼女は私の母より年上だ','彼女は家族でいちばん年上だ'], ans:0,
+    hint:'as … as か、-er than か、the -est か。どれが聞こえた？',
+    naru:'as old as ＝「同じくらいの年」。as と as にはさまれた old は形が変わりません。'},
+
+  {sec:'6. ボス問題：自分のことを言う（2分）'},
+  {type:'write', id:'w1', tag:'boss', q:'自分とだれか（家族・友だち・ペット）をくらべて、<br>[e:I am ____er than ____.] の形で書こう。',
+    example:'例：I am taller than my mother. / I am older than my cat. / My dog is bigger than me.', placeholder:'I am ...er than ...', ok_example:'I am taller than my mother.',
+    pattern:'(\\w+er|more\\s+\\w+)\\s+than\\s+\\S+', need:'-er than か more … than を使って、くらべる相手を書こう。'},
+
+  {sec:'もっと知りたい：よくある「なんで？」'},
+  {type:'why', q:'なんで -er と more の2種類があるの？',
+    a:'言いやすさのためです。tall → taller のように、短い語は -er をつけてもすぐ言えます。<br>でも difficult に -er をつけると「ディフィカルター」と長くて言いにくい。だから長い語は前に more を置いて [e:more difficult] にします。<br>迷ったら、声に出して言いにくいほうをやめればだいたい OK です。'},
+  {type:'why', q:'than のあとは me？ I？ どっちが正しいの？',
+    a:'ふだんの会話では [e:taller than me] がふつうです。<br>[e:taller than I am] のように、うしろに am をつけるなら I。am なしの [e:than I] は、かたい言い方です。<br>まずは [e:than me] で覚えておけば大丈夫です。'},
+
+  {sec:'まとめ'},
+  {type:'more', q:'「とても」と「より」はちがう', rows:[
+    {en:'Ken is very tall.', label:'くらべていない（とても背が高い）'},
+    {en:'Ken is taller than Yuki.', label:'くらべている（ユキより背が高い）', today:1}],
+    note:'「いちばん」なら [e:the tallest]。the を忘れずに。'}
+  ]
+});
+
+</script>
+
+<script>
+LESSONS.sort((a,b)=>a.no-b.no);
+
+// ===== 状態 =====
+const S=load();
+function load(){try{const s=JSON.parse(localStorage.getItem(KEY));if(s&&s.v===1)return s}catch(e){}return {v:1,dev:rid(),nick:'',lessons:{}}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+function rid(){const c='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';let r='';for(let i=0;i<6;i++)r+=c[Math.floor(Math.random()*c.length)];return r}
+function LSof(n){const k='L'+n;if(!S.lessons[k])S.lessons[k]={u:{},w:{},t0:0,ms:0};return S.lessons[k]}
+let L=null, streak=0;
+const LS=()=>LSof(L.no);
+
+// ===== 読み上げ =====
+let voice=null,sayOK=false;
+function pickVoice(){if(!('speechSynthesis' in window))return;const vs=speechSynthesis.getVoices();voice=vs.find(v=>/en[-_]US/i.test(v.lang)&&/Samantha|Google|Aaron|Nicky/i.test(v.name))||vs.find(v=>/en[-_]US/i.test(v.lang))||vs.find(v=>/^en/i.test(v.lang))||null}
+if('speechSynthesis' in window){pickVoice();speechSynthesis.onvoiceschanged=pickVoice}
+function say(t,rate){
+  if(!('speechSynthesis' in window)){toast('この画面では読み上げが使えません。Safari か Chrome で開いてください');return}
+  const ss=window.speechSynthesis;
+  if(ss.speaking||ss.pending)ss.cancel();
+  if(!voice)pickVoice();
+  const u=new SpeechSynthesisUtterance(t);u.lang='en-US';u.rate=rate||0.9;u.volume=1;if(voice)u.voice=voice;
+  u.onstart=()=>{sayOK=true};
+  u.onerror=e=>{if(e.error!=='interrupted'&&e.error!=='canceled')toast('音が出せませんでした（'+e.error+'）')};
+  ss.resume();ss.speak(u);
+  setTimeout(()=>{if(!sayOK&&!ss.speaking)toast('音が出ないときは、消音スイッチを切る／Safari で開く')},2500);
+}
+function soundTest(){
+  const el=document.getElementById('sndst'),has='speechSynthesis' in window,n=has?speechSynthesis.getVoices().length:0;
+  sayOK=false;say('Hello. Can you hear me?',0.9);
+  el.textContent=has?`読み上げ：あり／英語の声：${voice?voice.name:'未取得（初回は少し待って、もう一度）'}（声の数 ${n}）`:'読み上げ：なし（この画面では使えません）';
+  setTimeout(()=>{if(has)el.textContent+=sayOK?' → 再生できました':' → 再生が始まりませんでした'},2500);
+}
+
+// ===== 文字の整形 =====
+const app=document.getElementById('app');
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+// [s:..] [v:..] [o:..] [c:..] [w:..] は色の箱、[e:..] は英語の字体
+function fmt(s){if(!s)return '';return String(s).replace(/\[(s|v|o|c|w|e):([^\]]+)\]/g,(m,k,t)=>k==='e'?`<span class="en">${t}</span>`:`<span class="box b${k}">${t}</span>`)}
+const isEn=o=>/^[A-Za-z"'(]/.test(o);
+const TAG={see:['見る','t-see'],do:['手を動かす','t-do'],think:['考える','t-think'],solve:['解く','t-solve'],boss:['ボス','t-boss'],why:['なんで？','t-why'],ear:['聞く','t-ear']};
+function tag(t){const a=TAG[t];return a?`<span class="tag ${a[1]}">${a[0]}</span>`:''}
+const units=l=>l.steps.filter(s=>s.type==='order'||s.type==='choice');
+function hash(str){let h=7;for(const c of str)h=(h*31+c.charCodeAt(0))%233280;return h}
+function perm(n,seed){const r=[...Array(n).keys()];let x=seed;for(let i=n-1;i>0;i--){x=(x*9301+49297)%233280;const j=Math.floor(x/233280*(i+1));[r[i],r[j]]=[r[j],r[i]]}return r}
+function shuffled(n,seed){const r=perm(n,seed);if(n>1&&r.every((v,i)=>v===i))[r[0],r[1]]=[r[1],r[0]];return r}
+
+// ===== もくじ =====
+function lname(l){return l.no<=16?`第${l.no}回`:`付録${l.no-16}`}
+function stat(l){const ls=LSof(l.no),us=units(l);let solved=0,first=0,shown=0,tries=0;
+  us.forEach(s=>{const u=ls.u[s.id];if(!u)return;tries+=u.tries||0;if(u.ok||u.shown)solved++;if(u.ok&&u.first)first++;if(u.shown)shown++});
+  const all=us.length,ok=solved-shown,star=solved<all?0:(first/all>=0.8?3:ok/all>=0.6?2:1);
+  return {all,solved,first,shown,tries,star}}
+function menu(){
+  L=null;streak=0;
+  document.getElementById('htitle').textContent='なっとく英語Ⅱ';
+  document.getElementById('tomenu').hidden=true;
+  document.getElementById('hbar').style.visibility='hidden';
+  document.getElementById('cnt').textContent='';document.getElementById('streak').textContent='';
+  let h=`<div class="card"><div class="q" style="font-size:20px">なっとく英語Ⅱ</div>
+    <div class="small">英語コミュニケーションⅡの文法を、1回30分で「なっとく」する。<br>どの回からでも始められます。</div>
+    <div style="margin-top:10px"><button class="btn sub" id="sndtest">🔊 音のテスト</button><div class="small" id="sndst"></div></div>
+    <div class="small">音が出ないときは、①消音スイッチを切る ②音量を上げる ③Safari で開く。</div></div>`;
+  const row=l=>{const st=stat(l),done=st.solved===st.all;
+    return `<button class="lesson" data-go="${l.no}"><span class="no">${lname(l)}</span><span class="tt">${esc(l.title)}<small>${esc(l.sub||'')}</small></span>
+      <span class="st">${done?'★'.repeat(st.star)+'☆'.repeat(3-st.star):st.solved?`${st.solved}/${st.all}`:''}</span></button>`};
+  h+=`<div class="half">前期</div>`+LESSONS.filter(l=>l.no<=8).map(row).join('');
+  h+=`<div class="half">後期</div>`+LESSONS.filter(l=>l.no>8&&l.no<=16).map(row).join('');
+  const ap=LESSONS.filter(l=>l.no>16);
+  if(ap.length)h+=`<div class="half">付録：読解のまとめ</div>`+ap.map(row).join('');
+  app.innerHTML=h;window.scrollTo(0,0);
+}
+
+// ===== 1回分 =====
+function open(n){
+  L=LESSONS.find(l=>l.no===n);if(!L){menu();return}
+  streak=0;Object.keys(ORD).forEach(k=>delete ORD[k]);
+  const ls=LS();if(!ls.t0){ls.t0=Date.now();save()}
+  document.getElementById('htitle').textContent=`${lname(L)}　${L.title}`;
+  document.getElementById('tomenu').hidden=false;
+  document.getElementById('hbar').style.visibility='visible';
+  let h=`<div class="card"><div class="tag t-solve">${lname(L)}</div><div class="q" style="font-size:20px">${esc(L.title)}${L.sub?` ＝「${esc(L.sub)}」`:''}</div><div class="goal">${fmt(L.goal)}</div>
+    <p class="small">🔊 は英語を読み上げます。1回まちがえるとヒント、2回で「答えを見る」が出ます。</p></div>`;
+  L.steps.forEach((s,i)=>{h+=stepHTML(s,i,ls)});
+  h+=endHTML(ls);
+  app.innerHTML=h;
+  L.steps.filter(s=>s.type==='order').forEach(drawOrder);
+  progress();window.scrollTo(0,0);
+}
+
+function stepHTML(s,i,ls){
+  if(s.sec)return `<div class="sec">${esc(s.sec)}</div>`;
+  if(s.type==='info')return `<div class="card">${tag(s.tag)}${s.q?`<div class="q">${fmt(s.q)}</div>`:''}${fmt(s.html)}</div>`;
+  if(s.type==='morph'){
+    const p=s.parts.map(x=>{const t=x.c?`<span class="box b${x.c}">${esc(x.t)}</span>`:esc(x.t);return x.out?`<span class="out">${t}&nbsp;</span>`:x.in?`<span class="in">${t}&nbsp;</span>`:`<span>${t}&nbsp;</span>`}).join('');
+    const b=s.btn||['ちぢめる ▶','◀ もどす'];
+    return `<div class="card">${tag(s.tag||'see')}<div class="q">${fmt(s.q)}</div>${fmt(s.lead||'')}
+      <div class="morph" id="mo-${i}">${p}</div><button class="btn sub" data-morph="${i}" data-b0="${esc(b[0])}" data-b1="${esc(b[1])}">${esc(b[0])}</button>
+      ${s.say?`<button class="say" data-say="${esc(s.say)}">🔊</button>`:''}
+      ${s.note?`<div class="naru"><b>ポイント</b>　${fmt(s.note)}</div>`:''}</div>`}
+  if(s.type==='words')return `<div class="card">${tag(s.tag||'see')}<div class="q">先に、出てくる単語</div><div class="vocab">${s.items.map(w=>`<button class="say" data-say="${esc(w[0])}">🔊</button><div><span class="en">${esc(w[0])}</span>　<span class="small">${esc(w[1])}</span></div>`).join('')}</div></div>`;
+  if(s.type==='read'){
+    const plain=p=>p.replace(/\{([^|]+)\|[^}]+\}/g,'$1');
+    const ps=s.paras.map(p=>`<p class="en">${esc(p).replace(/\{([^|]+)\|([^}]+)\}/g,'<span class="g" data-g="$2">$1</span>')} <button class="say" data-say="${esc(plain(p))}">🔊</button></p>`).join('');
+    const all=s.paras.map(plain).join(' ');
+    return `<div class="card">${tag(s.tag||'see')}<div class="q">${esc(s.title)}</div>
+      <button class="say" data-say="${esc(all)}">🔊 ぜんぶ聞く</button><button class="say" data-say="${esc(all)}" data-rate="0.65">🐢 おそく</button>
+      <div class="passage">${ps}</div><div class="gloss" id="gloss-${i}">点線の語をタップすると意味が出ます。</div>
+      ${s.find?`<div class="small">${fmt(s.find)}</div>`:''}</div>`}
+  if(s.type==='write'){
+    const v=ls.w[s.id]||'';
+    return `<div class="card">${tag(s.tag||'boss')}<div class="q">${fmt(s.q)}</div><div class="small">${fmt(s.example)}</div>
+      <input type="text" id="in-${s.id}" value="${esc(v)}" autocomplete="off" autocapitalize="sentences" placeholder="${esc(s.placeholder||'')}">
+      <div style="margin-top:8px"><button class="btn" data-write="${s.id}">できた</button> <button class="say" data-sayin="${s.id}">🔊 自分の文を聞く</button></div>
+      <div id="fb-${s.id}">${v&&chk(s,v)?okWrite:''}</div></div>`}
+  if(s.type==='why')return `<div class="card">${tag('why')}<details><summary>${fmt(s.q)}</summary><div class="small" style="margin:6px 0">30秒考えてから、開こう。</div><div>${fmt(s.a)}</div></details></div>`;
+  if(s.type==='more')return `<div class="card two">${tag('see')}<div class="q">${fmt(s.q)}</div>${s.rows.map(r=>`<div class="row en">${esc(r.en)}</div><div class="lab">${fmt(r.label)}${r.today?' ← 今日はこっち':''}</div>`).join('')}${s.note?`<div class="small">${fmt(s.note)}</div>`:''}</div>`;
+  // 判定ユニット
+  const u=ls.u[s.id]||{},done=u.ok||u.shown;
+  let h=`<div class="card" id="card-${s.id}">${tag(s.tag)}<div class="q">${fmt(s.q)}</div>`;
+  if(s.listen)h+=`<button class="say" data-say="${esc(s.listen)}">🔊 聞く</button><button class="say" data-say="${esc(s.listen)}" data-rate="0.6">🐢 おそく</button>`;
+  if(s.say)h+=`<button class="say" data-say="${esc(s.say)}">🔊</button>`;
+  if(s.type==='choice'){
+    const ord=shuffled(s.opts.length,hash(L.no+s.id));
+    h+=ord.map(k=>`<button class="opt ${done&&k===s.ans?'sel-ok':''}" data-opt="${s.id}" data-k="${k}" ${done?'disabled':''}>${isEn(s.opts[k])?`<span class="en">${esc(s.opts[k])}</span>`:esc(s.opts[k])}</button>`).join('');
+  }else{
+    h+=`<div class="small">色の枠：<span class="box bs">だれが</span><span class="box bv">する</span><span class="box bo">なにを</span>${s.colors&&s.colors.includes('c')?'<span class="box bc">どんな・どうする</span>':''}</div>
+      <div class="chips line" id="line-${s.id}"></div><div class="chips pool" id="pool-${s.id}"></div>
+      <div style="margin-top:8px"><button class="btn" data-check="${s.id}" ${done?'disabled':''}>答え合わせ</button> <button class="btn sub" data-reset="${s.id}" ${done?'disabled':''}>やりなおす</button></div>`;
+  }
+  return h+`<div id="fb-${s.id}">${fbDone(s,u)}</div></div>`;
+}
+const okWrite='<div class="fb ok">いいね！ 自分のことを英語で言えました。🔊 で自分の文を聞いて、まねして言ってみよう。</div>';
+function chk(s,v){try{return new RegExp(s.pattern,'i').test(v)}catch(e){return v.length>3}}
+function sentence(s){return s.words.join(' ')+(s.end||'.')}
+function fbDone(s,u){
+  if(u.ok)return `<div class="fb ok">${u.first?'1回で正解！':'正解！'}</div><div class="naru"><b>なるほど</b>　${fmt(s.naru)}</div>`;
+  if(u.shown)return `<div class="fb hint">答え：${s.type==='order'?`<span class="en">${esc(sentence(s))}</span>`:esc(s.opts[s.ans])}</div><div class="naru"><b>なるほど</b>　${fmt(s.naru)}</div>`;
+  return '';
+}
+function endHTML(ls){
+  return `<div class="sec">おわりに</div><div class="card">
+    <div class="q">今日のふりかえり</div><div class="stars" id="stars"></div><div id="endtxt" class="small"></div>
+    <div style="margin-top:10px">今日わかったことを一言（日本語でOK）</div>
+    <textarea id="refl" rows="2">${esc(ls.refl||'')}</textarea>
+    <div style="margin-top:10px">ニックネーム</div><input type="text" id="nick" value="${esc(S.nick)}" placeholder="本名は書かないでね">
+    <div style="margin-top:10px"><button class="btn" id="send">記録を送る</button> <button class="btn sub" data-tomenu="1">もくじへ</button></div>
+    <div id="sendmsg" class="small" style="margin-top:6px"></div></div>`;
+}
+
+// ===== 並べかえ =====
+const ORD={};
+function drawOrder(s){
+  const u=LS().u[s.id]||{};
+  if(!ORD[s.id])ORD[s.id]={pool:shuffled(s.words.length,hash(L.no+s.id)),line:[]};
+  if(u.ok||u.shown)ORD[s.id]={pool:[],line:s.words.map((w,i)=>i)};
+  const o=ORD[s.id],dis=(u.ok||u.shown)?'disabled':'',col=s.colors||[];
+  const chip=(i,w)=>`<button class="chip ${col[i]?'c-'+col[i]:''}" data-chip="${s.id}" data-i="${i}" data-w="${w}" ${dis}>${esc(s.words[i])}</button>`;
+  document.getElementById('line-'+s.id).innerHTML=o.line.map(i=>chip(i,'line')).join('');
+  document.getElementById('pool-'+s.id).innerHTML=o.pool.map(i=>chip(i,'pool')).join('');
+}
+
+// ===== 判定 =====
+const byId=id=>L.steps.find(s=>s.id===id);
+function judge(s,ok){
+  const ls=LS(),u=ls.u[s.id]||(ls.u[s.id]={tries:0});
+  u.tries++;
+  const fb=document.getElementById('fb-'+s.id);
+  if(ok){u.ok=true;u.first=(u.tries===1);streak++;save();
+    fb.innerHTML=fbDone(s,u)+(streak>=3?`<div class="small">🔥 ${streak}問連続正解</div>`:'');lock(s);progress();return}
+  streak=0;save();
+  fb.innerHTML=`<div class="fb ng">もう一度。</div><div class="fb hint">ヒント：${fmt(s.hint)}</div>`+(u.tries>=2?`<button class="btn sub" style="margin-top:8px" data-show="${s.id}">答えを見る</button>`:'');
+  progress();
+}
+function lock(s){
+  if(s.type==='choice')document.querySelectorAll(`[data-opt="${s.id}"]`).forEach(b=>{b.disabled=true;if(+b.dataset.k===s.ans)b.classList.add('sel-ok')});
+  else{drawOrder(s);document.querySelectorAll(`[data-check="${s.id}"],[data-reset="${s.id}"]`).forEach(b=>b.disabled=true)}
+}
+
+app.addEventListener('click',e=>{
+  const t=e.target.closest('button,.g');if(!t)return;
+  if(t.dataset.go){location.hash='L'+t.dataset.go;return}
+  if(t.dataset.tomenu){location.hash='';return}
+  if(t.id==='sndtest'){soundTest();return}
+  if(t.dataset.say){say(t.dataset.say,+t.dataset.rate||0.9);return}
+  if(t.classList.contains('g')){const gl=t.closest('.card').querySelector('.gloss');if(gl)gl.textContent=t.textContent+'：'+t.dataset.g;say(t.textContent,0.8);return}
+  if(t.dataset.morph){const el=document.getElementById('mo-'+t.dataset.morph);el.classList.toggle('on');t.textContent=el.classList.contains('on')?t.dataset.b1:t.dataset.b0;return}
+  if(t.dataset.opt){const s=byId(t.dataset.opt),k=+t.dataset.k;
+    if(k!==s.ans){t.classList.add('sel-ng');setTimeout(()=>t.classList.remove('sel-ng'),900)}
+    judge(s,k===s.ans);return}
+  if(t.dataset.chip){const s=byId(t.dataset.chip),o=ORD[s.id],i=+t.dataset.i;
+    if(t.dataset.w==='pool'){o.pool=o.pool.filter(x=>x!==i);o.line.push(i);say(s.words[i],0.9)}else{o.line=o.line.filter(x=>x!==i);o.pool.push(i)}
+    drawOrder(s);return}
+  if(t.dataset.reset){const o=ORD[t.dataset.reset];o.pool=o.pool.concat(o.line);o.line=[];drawOrder(byId(t.dataset.reset));return}
+  if(t.dataset.check){const s=byId(t.dataset.check),o=ORD[s.id];
+    if(o.pool.length){document.getElementById('fb-'+s.id).innerHTML='<div class="fb hint">ぜんぶの語を使おう。</div>';return}
+    const ok=o.line.map(i=>s.words[i]).join(' ')===s.words.join(' ');
+    judge(s,ok);if(ok)say(sentence(s),0.9);return}
+  if(t.dataset.show){const s=byId(t.dataset.show),u=LS().u[s.id];u.shown=true;streak=0;save();
+    document.getElementById('fb-'+s.id).innerHTML=fbDone(s,u);lock(s);progress();if(s.type==='order')say(sentence(s),0.9);return}
+  if(t.dataset.write){const s=byId(t.dataset.write),v=document.getElementById('in-'+s.id).value.trim();
+    LS().w[s.id]=v;save();document.getElementById('fb-'+s.id).innerHTML=chk(s,v)?okWrite:`<div class="fb hint">${fmt(s.need)}</div>`;return}
+  if(t.dataset.sayin){const v=document.getElementById('in-'+t.dataset.sayin).value.trim();if(v)say(v,0.85);return}
+  if(t.id==='send'){send();return}
+});
+app.addEventListener('input',e=>{if(!L)return;if(e.target.id==='refl'){LS().refl=e.target.value;save()}if(e.target.id==='nick'){S.nick=e.target.value.trim();save()}});
+document.getElementById('tomenu').onclick=()=>{location.hash=''};
+
+// ===== 進み具合 =====
+function progress(){
+  const st=stat(L);
+  document.getElementById('bar').style.width=(st.solved/st.all*100)+'%';
+  document.getElementById('cnt').textContent=`${st.solved} / ${st.all} 問`;
+  document.getElementById('streak').textContent=streak>=2?`🔥 ${streak}連続`:'';
+  const se=document.getElementById('stars');
+  if(se){se.textContent=st.solved<st.all?'☆☆☆':'★'.repeat(st.star)+'☆'.repeat(3-st.star);
+    document.getElementById('endtxt').textContent=st.solved<st.all?`あと ${st.all-st.solved} 問で星がつきます。`:`クリア！ 1回で正解 ${st.first}問／答えを見た ${st.shown}問`}
+  const ls=LS();if(st.solved===st.all&&!ls.clearToast){ls.clearToast=1;ls.ms=Date.now()-ls.t0;save();toast('クリア！ 下の「記録を送る」を押そう')}
+}
+
+// ===== 送信 =====
+function send(){
+  const st=stat(L),ls=LS(),msg=document.getElementById('sendmsg');
+  if(!S.nick){msg.textContent='ニックネームを入れてね。';return}
+  const p={app:APP,ver:APP_VER,dev:S.dev,nick:S.nick,lesson:L.no,solved:st.solved,all:st.all,first:st.first,shown:st.shown,tries:st.tries,
+    min:Math.round((ls.ms||Date.now()-ls.t0)/60000),refl:ls.refl||'',write:Object.values(ls.w).join(' / ')};
+  const q=Object.entries(p).map(([k,v])=>k+'='+encodeURIComponent(v)).join('&');
+  if(!GAS_URL){msg.innerHTML='記録先はまだつないでいません。<br>送る内容：'+esc(decodeURIComponent(q.replace(/&/g,' ／ ')));return}
+  fetch(GAS_URL+'?'+q,{mode:'no-cors'}).then(()=>{msg.textContent='送りました。おつかれさま！'}).catch(()=>{msg.textContent='送れませんでした。電波のよいところで、もう一度押してね。'});
+}
+function toast(t){const el=document.getElementById('toast');el.textContent=t;el.classList.add('on');setTimeout(()=>el.classList.remove('on'),2200)}
+
+function route(){const m=location.hash.match(/^#L(\d+)$/);if(m)open(+m[1]);else menu()}
+window.addEventListener('hashchange',route);
+route();
+</script>
+</body>
+</html>
